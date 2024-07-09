@@ -1,0 +1,81 @@
+/* CSS Document */
+
+html, body {
+	
+	margin: 0 auto;
+	font-family: sans-serif;
+	font-size: 13px;
+    background-image:url(../img/doomwallpaper.jpg) ;
+}
+	
+h1 {
+	margin: 2px;
+  
+}
+
+	p {
+        color: white; /*Does nothing?? */
+    }
+button {
+   
+   }
+
+#content {
+	padding: 20px;
+	display:flex;
+    flex-wrap:wrap;
+}
+#controls {
+   display: flex;
+    color:#fff;
+    text-align: center;
+}
+
+#controls > p{
+    flex:1;
+
+}
+#gamespace {
+    
+	margin: 20px;
+    height: 350px;
+    width:600px;
+	background-image: url(..//img/Doombackground.jpeg);
+	cursor: url(..//img/gun.png), default;
+    border: 5px solid rgb(250, 3, 3); 
+    border-radius: 10px;
+    
+    
+
+}
+
+div#gamespace img {
+    position: absolute;
+    
+} 
+
+div#gamespace {position: relative;}
+
+#score {
+    font-size: 20px;
+}
+#timer {
+    display: none;
+   font-size: 20px;
+
+}
+.col1{
+    text-align:center;
+    width: 550px;
+    min-width: 400px;
+}
+
+
+@media only screen and (max-width: 900px){
+    #content{
+        display: inline-block;
+    }
+    .col1{
+        margin:0 auto;
+    }
+}

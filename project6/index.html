@@ -1,0 +1,136 @@
+<!-- 
+		Name: <Jonathan Cabeen>
+		Date: <10/19/22>
+		Class: CSCI2447, Javascript Fundamentals
+		Project X
+ -->
+
+<!DOCTYPE html>
+<html>
+  <link rel="shortcut icon" type="image/png" href="img/doomface.png">  
+  <head>
+    <title>DOOM MINI</title>
+    <link href="css/game.css" rel="stylesheet" />
+    <meta charset ="utf-8">
+  </head>
+   <div id="wrapper">   
+	<div id="content">
+        <div id="leftside" class="col1">
+            <h1><img src="img/doomlogo.png" width="300" height="184" alt="DOOM"></h1>
+            <p><img src ="img/minaturelogo.png"></p>
+            </div>
+            <div>
+            <p style="color: white;" id="demo"></p>
+            <p style="color: white;" id="directions"><b> This is a fan-made browser game for ID software's <i> DOOM</i>. Point and click to kill as many demons as you can before time runs out.</b> </p>
+            <div id="controls"> 
+            <p style = "font-size: 20px"><span id="score">0 points</span></p>
+           <p><span id="timer"><b>30 Seconds Remaining</b></span></p>
+        </div>	 
+        <button type="button" id="start_button"><b>Start!</b></button>   
+		<div id="gamespace">
+      <p id ="position"></p>
+		</div>
+    <footer id = "foot"><a href = "load/load.html"></a></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src = "js/jquery-3.6.1.min.js"></script>
+<script>
+  var name =  (prompt ('What was your name?'));
+    document.getElementById("demo").innerHTML = "Enjoy your game, " + name;
+    let score = 0;
+    var timer = 30;
+    let clock; 
+    let d;
+    $(document).ready(function() {
+       //this ruins the start button
+      $("button").click(function(){
+start()
+
+      }); 
+$("button").css({
+  "padding": "8px",
+    "font-size": "18px",
+    "background-color": "red",
+    "border": "5px solid black",
+    "border-radius": "20px",
+});
+$("#gamespace").on("click", "img", function(){
+    incscore();
+   $(this).hide("dissolve");
+    })
+});
+function xaxis(gamespace) {
+  let x = $("#gamespace").width();
+ return Math.floor(Math.random() * x)-50;
+}
+function yaxis(gamespace){ 
+  let y = $("#gamespace").height();
+  return Math.floor(Math.random() * y)-50;
+}
+function incscore(){
+score +=1;
+$("#score").text("SCORE: "+ score +" points");
+}
+function dectimer()
+{
+  
+  $("#timer").show();
+  if (timer   <  0) {
+        clearTimeout(clock);
+        clearTimeout(d);
+        alert("Time's Up! Your score was: " + score + " points");
+        clearInterval(time);
+        clearInterval(add);
+        $('div#gamespace img').hide();
+        location.reload();
+
+    } else {(dectimer); 
+      $("#timer").text(timer + " seconds remaining");
+     timer--;
+     clock = setTimeout("countTimer()", 1000);
+    }
+   
+    }
+function addImage()
+{
+$('#gamespace').append('<img src="img/demonsprite.png" height = 53 width =46 />');
+$("div#gamespace img").css({
+  left: xaxis() + "px",
+  top:  yaxis() + "px",
+  
+ 
+  //var a = xaxis();
+  //var b = yaxis(); 
+  //$('#gamespace').append(`<img src="img/demonsprite.png" height = 53 width =46 ${a}px; top:${b}px;" class="gameimage"/>`);
+  //d = setTimeout("addImage()", randomtime());
+  //I did it this way and it worked for a bit, then wouldn't work after I changed something.
+
+} 
+)};
+
+
+//function randomtime(){
+  //return Math.floor(Math.random() * 5000);
+//here I am trying to make a randomly generated variable for the time the image is added, but I am doing something wrong
+
+  let time;
+  let add;
+function start()
+{
+  
+  $("#start_button").off();
+  var r = Math.floor(Math.random()* 3000);
+    time = setInterval(dectimer, 1000);
+    add = setInterval(addImage, r);
+    //d = setTimeout("addImage()", randomtime());
+};
+$(document).ready(function() {
+  $("foot").load(load/load.html);
+$('#foot a').load(url);
+var url = $(this).attr('href');
+return false;
+});
+</script>
+
+</body>
+</html>
+<!-- 10/28/21 -->
